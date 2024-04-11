@@ -5,7 +5,7 @@ function Footer() {
   return (
     <Container>
       <Text>
-        Built and maintained with{" "}
+        Developed and maintained with
         <Link>
           <FaHeart color="red" />
         </Link>

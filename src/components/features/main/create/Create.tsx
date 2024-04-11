@@ -56,7 +56,7 @@ function CreateTodo() {
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
+            placeholder="Title..."
             name="title"
             type="text"
           />
@@ -64,7 +64,7 @@ function CreateTodo() {
           <Input
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description"
+            placeholder="Description..."
             name="description"
             type="text"
           />
