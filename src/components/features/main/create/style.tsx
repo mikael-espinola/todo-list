@@ -2,12 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 100%;
   background-color: coral;
+
+  @media screen and (min-width: 700px) {
+    width: 40%;
+  }
 `;
 
 export const Label = styled.p`
