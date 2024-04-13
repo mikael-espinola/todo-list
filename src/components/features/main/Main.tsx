@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container, ListsContainer, ItemContainer } from "./style";
+import React from "react";
+import {
+  Button,
+  Container,
+  ListsContainer,
+  ItemContainer,
+  Subtitle,
+} from "./style";
 import Create from "./create/Create";
-import ShowList from "./showList/ShowList";
 import { useDispatch, useSelector } from "react-redux";
 import { openStatus, currentAction } from "../../redux/toggleSlice";
 import { Label } from "./create/style";
+import ShowListDone from "./showList/ShowListDone";
+import ShowListToDo from "./showList/ShowListToDo";
 
 function Main() {
   const status = useSelector(currentAction);
@@ -21,12 +28,12 @@ function Main() {
       {status && <Create />}
       <ListsContainer>
         <ItemContainer>
-          <Label>To Do</Label>
-          <ShowList booleanValue={false} />
+          <Subtitle>To Do</Subtitle>
+          <ShowListToDo />
         </ItemContainer>
         <ItemContainer>
-          <Label>Done</Label>
-          <ShowList booleanValue={true} />
+          <Subtitle>Done</Subtitle>
+          <ShowListDone />
         </ItemContainer>
       </ListsContainer>
     </Container>

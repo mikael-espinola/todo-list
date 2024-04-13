@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+interface InputProps {
+  widthMax: number;
+}
+
+export const FirstContainer = styled.div`
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #d4cdcd4f;
+  z-index: 999;
+`;
+
 export const Container = styled.div`
   display: flex;
   position: fixed;
@@ -7,10 +22,14 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  background-color: coral;
+  height: 45%;
+  min-height: max-content;
+  background-color: #5b5858;
+  color: #fff;
 
   @media screen and (min-width: 700px) {
-    width: 40%;
+    width: 60%;
+    height: 60%;
   }
 `;
 
@@ -30,20 +49,41 @@ export const Form = styled.form`
 export const InputContainer = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
 `;
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   padding: 0.6em;
-  width: 100%;
+  width: ${(props) => props.widthMax}%;
   margin: 0.1em;
+  border-radius: 7px;
+
+  @media screen and (min-width: 700px) {
+    width: ${(props) => (props.widthMax === 50 ? 20 : props.widthMax)}%;
+  }
 `;
+
+export const TextArea = styled.textarea`
+  min-height: 90px;
+  overflow: auto;
+  resize: none;
+  border-radius: 7px;
+  padding: 0.5em;
+`;
+
 export const Button = styled.button`
   padding: 0.4em;
   margin-top: 0.4em;
   width: 100%;
   cursor: pointer;
+  color: black;
+  border-radius: 7px;
+  border: none;
+
+  @media screen and (min-width: 700px) {
+    width: 50%;
+    margin: 0 auto;
+  }
 `;
 
 export const CloseButton = styled.button`

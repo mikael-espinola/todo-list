@@ -6,7 +6,4 @@ export const Container = styled.div`
   width: 100%;
   position: relative;
   margin-top: 1em;
-
-  @media screen and (min-width: 700px) {
-  }
 `;
