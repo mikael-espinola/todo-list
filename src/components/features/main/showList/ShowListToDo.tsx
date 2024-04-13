@@ -8,27 +8,25 @@ interface Value {
   booleanValue: boolean;
 }
 
-function ShowList({ booleanValue }: Value) {
+function ShowList() {
   const [listStatus, setListStatus] = useState(false);
+  const [toDoList, setToDoList] = useState<Todo[]>();
   const list = useSelector(todosList);
 
   useEffect(() => {
-    list.length > 0 ? setListStatus(true) : setListStatus(false);
+    let newList = list.filter((todo) => todo.status === false);
+    newList.length > 0 ? setListStatus(true) : setListStatus(false);
+    setToDoList(newList);
   }, [list]);
 
   return (
     <Container>
       {listStatus ? (
         <List>
-          {list.map((todo) => {
-            return todo.status === booleanValue && <RenderTodo todo={todo} />;
-          })}
+          {toDoList && toDoList.map((todo) => <RenderTodo todo={todo} />)}
         </List>
       ) : (
         <>
-          {list.map((todo) => {
-            return todo.status === !booleanValue && <RenderTodo todo={todo} />;
-          })}
           <Message>It all up! </Message>
         </>
       )}

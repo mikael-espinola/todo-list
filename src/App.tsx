@@ -10,8 +10,8 @@ function App() {
     <Container>
       <Header />
       <Main />
-      <GlobalStyles />
       <Footer />
+      <GlobalStyles />
     </Container>
   );
 }
