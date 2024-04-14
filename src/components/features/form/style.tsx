@@ -4,36 +4,6 @@ interface InputProps {
   widthmax: number;
 }
 
-export const FirstContainer = styled.div`
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #d4cdcd4f;
-  z-index: 999;
-`;
-
-export const Container = styled.div`
-  display: flex;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: max-content;
-  min-height: max-content;
-  background-color: #5b5858;
-  color: #fff;
-  border-radius: 7px;
-
-  @media screen and (min-width: 700px) {
-    width: 60%;
-    height: 60%;
-  }
-`;
-
 export const Label = styled.p`
   padding: 0.4em;
   width: 100%;

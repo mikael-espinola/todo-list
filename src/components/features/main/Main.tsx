@@ -9,7 +9,6 @@ import {
 import Create from "./create/Create";
 import { useDispatch, useSelector } from "react-redux";
 import { openStatus, currentAction } from "../../redux/toggleSlice";
-import { Label } from "./create/style";
 import ShowListDone from "./showList/ShowListDone";
 import ShowListToDo from "./showList/ShowListToDo";
 
