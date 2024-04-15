@@ -11,9 +11,9 @@ export const Button = styled.button`
   padding: 0.5em;
   margin: 1em 0;
   border: none;
-  background-color: #5b5858;
+  background-color: #fb9404;
   padding: 0.8em;
-  color: #fff;
+  color: #000000;
   border-radius: 7px;
 `;
 

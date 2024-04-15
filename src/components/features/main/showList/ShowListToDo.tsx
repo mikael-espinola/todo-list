@@ -23,11 +23,14 @@ function ShowList() {
     <Container>
       {listStatus ? (
         <List>
-          {toDoList && toDoList.map((todo) => <RenderTodo todo={todo} />)}
+          {toDoList &&
+            toDoList.map((todo, index) => (
+              <RenderTodo todo={todo} index={index} />
+            ))}
         </List>
       ) : (
         <>
-          <Message>It all up! </Message>
+          <Message>Nothing new 'til now... </Message>
         </>
       )}
     </Container>

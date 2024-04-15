@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const cloudTodos = localStorage.getItem("todos");
+const todosStrings = cloudTodos !== null ? JSON.parse(cloudTodos) : [];
 export interface Todo {
   id: number;
   title: string;
@@ -7,13 +9,12 @@ export interface Todo {
   finalDate: string;
   status: boolean;
 }
-
 interface TodoState {
   todos: Todo[];
 }
 
 const initialState: TodoState = {
-  todos: [],
+  todos: todosStrings,
 };
 
 export const todoSlice = createSlice({
@@ -24,29 +25,45 @@ export const todoSlice = createSlice({
       const { title, description, finalDate } = action.payload;
       const id = state.todos.length + 1;
       state.todos.push({ id, title, description, finalDate, status: false });
+
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(state.todos.map((todo) => todo))
+      );
     },
     deleteTodo(state, action) {
       const id = action.payload;
-      const newArray = state.todos.filter((todo) => todo.id !== id);
-      return {
-        ...state,
-        todos: newArray,
-      };
+      state.todos = state.todos.filter((todo) => todo.id !== id);
+
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(state.todos.map((todo) => todo))
+      );
+
+      return state;
     },
     completeTodo(state, action) {
       const id = action.payload;
-      let updated = state.todos.map((todo) =>
-        todo.id === id ? { ...todo, status: !todo.status } : todo
+      state.todos = state.todos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              finalDate: new Date().toLocaleString(),
+              status: !todo.status,
+            }
+          : todo
       );
-      return {
-        ...state,
-        todos: updated,
-      };
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(state.todos.map((todo) => todo))
+      );
+
+      return state;
     },
     editTodo(state, action) {
       const { isId, title, description, finalDate } = action.payload;
       state.todos = state.todos.map((todo) =>
-        todo.id === action.payload.isId
+        todo.id === isId
           ? {
               ...todo,
               title: title,
@@ -55,9 +72,11 @@ export const todoSlice = createSlice({
             }
           : todo
       );
-      console.log(action);
-      console.log(action.payload.title);
-      console.log(action.payload.isId);
+      localStorage.setItem(
+        "todos",
+        JSON.stringify(state.todos.map((todo) => todo))
+      );
+
       return state;
     },
   },
