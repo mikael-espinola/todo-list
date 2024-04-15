@@ -23,7 +23,10 @@ function ShowListDone() {
     <Container>
       {listStatus ? (
         <List>
-          {doneList && doneList.map((todo) => <RenderTodo todo={todo} />)}
+          {doneList &&
+            doneList.map((todo, index) => (
+              <RenderTodo todo={todo} index={index} />
+            ))}
         </List>
       ) : (
         <>

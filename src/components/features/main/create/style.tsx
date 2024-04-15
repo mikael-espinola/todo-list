@@ -23,14 +23,12 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
   width: 100%;
   height: max-content;
-  min-height: max-content;
   background-color: #5b5858;
   color: #fff;
   border-radius: 7px;
 
   @media screen and (min-width: 700px) {
     width: 60%;
-    height: 60%;
   }
 `;
 

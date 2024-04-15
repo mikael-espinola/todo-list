@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { todoReducer } from "./todoSlice";
+import { Todo, todoReducer } from "./todoSlice";
 import { toggleReducer } from "./toggleSlice";
 import { editReducer } from "./editingSlice";
 

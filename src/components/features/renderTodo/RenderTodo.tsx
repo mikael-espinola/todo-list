@@ -22,9 +22,10 @@ import { setTodoId } from "../../redux/editingSlice";
 
 interface Render {
   todo: Todo;
+  index: number;
 }
 
-function RenderTodo({ todo }: Render) {
+function RenderTodo({ todo, index }: Render) {
   const dispatch = useDispatch();
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, todo: Todo) => {
     e.preventDefault();
@@ -34,8 +35,6 @@ function RenderTodo({ todo }: Render) {
     e.preventDefault();
     dispatch(setTodoId(todo.id));
     dispatch(openStatus());
-
-    console.log(todo);
   };
   const handleComplete = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -45,7 +44,7 @@ function RenderTodo({ todo }: Render) {
     dispatch(completeTodo(todo.id));
   };
   return (
-    <Item key={todo.id}>
+    <Item key={index}>
       <Title>{todo.title}</Title>
       <Details>{todo.description}</Details>
       <ContainerDetails>
@@ -70,7 +69,11 @@ function RenderTodo({ todo }: Render) {
           </ActionButton>
         </Actions>
         <FinalDate>
-          <Tag>Final time: </Tag> {todo.finalDate}
+          {todo.status === false ? (
+            <Tag>Final time: {todo.finalDate}</Tag>
+          ) : (
+            <Tag>Completed at: {todo.finalDate}</Tag>
+          )}
         </FinalDate>
       </ContainerDetails>
     </Item>
