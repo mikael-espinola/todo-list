@@ -9,6 +9,7 @@ import {
   Status,
   Tag,
   Title,
+  StatusColor,
 } from "./style";
 
 import { IoTrash } from "react-icons/io5";
@@ -51,9 +52,9 @@ function RenderTodo({ todo, index }: Render) {
         <Status>
           <Tag>Status: </Tag>
           {todo.status === false ? "Pending..." : "Completed!"}
+          <StatusColor status={todo.status} />
         </Status>
         <Actions>
-          <Tag>Actions: </Tag>
           <ActionButton title="delete" onClick={(e) => handleDelete(e, todo)}>
             <IoTrash />
           </ActionButton>

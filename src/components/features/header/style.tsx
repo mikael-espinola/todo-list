@@ -8,8 +8,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+
+  @media screen and (min-width: 800px) {
+    width: 90%;
+  }
 `;
 
 export const Title = styled.h1``;
