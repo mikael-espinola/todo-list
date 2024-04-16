@@ -9,7 +9,7 @@ const detailsTheme = {
 };
 
 interface StatusProp {
-  status: boolean;
+  status: string;
 }
 
 export const Tag = styled.label`
@@ -19,6 +19,7 @@ export const Tag = styled.label`
 `;
 export const Item = styled.li`
   border: 1px solid black;
+  background-color: ${(props) => props.theme.item};
   margin: 0.2em;
   border-radius: 5px;
   padding: 0 0.1em;
@@ -44,7 +45,7 @@ export const ContainerDetails = styled.div`
   }
 `;
 
-export const Status = styled.p`
+export const StatusContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,18 +53,22 @@ export const Status = styled.p`
   padding: ${detailsTheme.padding};
   border-radius: ${detailsTheme.borderRadius};
   width: 95%;
+`;
 
+export const Status = styled.p`
   @media screen and (min-width: 750px) {
     width: 70%;
   }
 `;
 
-export const StatusColor = styled.div<StatusProp>`
+export const StatusColor = styled.section<StatusProp>`
   margin-left: 0.5em;
   width: 20px;
   height: 20px;
   background-color: ${(props) =>
-    props.status ? detailsTheme.completedColor : detailsTheme.pendingColor};
+    props.status === "true"
+      ? detailsTheme.completedColor
+      : detailsTheme.pendingColor};
   border-radius: 17px;
 `;
 
@@ -72,13 +77,13 @@ export const Actions = styled.div`
   margin-left: 0.5em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: ${detailsTheme.primaryColor};
   padding: ${detailsTheme.padding};
   border-radius: ${detailsTheme.borderRadius};
 
   @media screen and (min-width: 800px) {
-    width: 50%;
+    width: 80%;
   }
 `;
 
