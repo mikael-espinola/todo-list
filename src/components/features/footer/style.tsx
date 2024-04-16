@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Text = styled.p`
   text-align: center;
-  color: #444;
+  color: ${(props) => props.theme.credits};
   @media screen and (max-width: 700px) {
     font-size: 11px;
   }
@@ -19,5 +19,5 @@ export const Link = styled.a`
   text-decoration: underline;
   margin: 0 0.2em;
   cursor: pointer;
-  color: #444;
+  color: ${(props) => props.theme.credits};
 `;

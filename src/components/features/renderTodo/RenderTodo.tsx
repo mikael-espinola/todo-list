@@ -10,6 +10,7 @@ import {
   Tag,
   Title,
   StatusColor,
+  StatusContainer,
 } from "./style";
 
 import { IoTrash } from "react-icons/io5";
@@ -49,18 +50,22 @@ function RenderTodo({ todo, index }: Render) {
       <Title>{todo.title}</Title>
       <Details>{todo.description}</Details>
       <ContainerDetails>
-        <Status>
-          <Tag>Status: </Tag>
-          {todo.status === false ? "Pending..." : "Completed!"}
-          <StatusColor status={todo.status} />
-        </Status>
+        <StatusContainer>
+          <Status>
+            <Tag>Status: </Tag>
+            {todo.status === false ? "Pending..." : "Completed!"}
+          </Status>
+          <StatusColor status={todo.status.toString()} />
+        </StatusContainer>
         <Actions>
           <ActionButton title="delete" onClick={(e) => handleDelete(e, todo)}>
             <IoTrash />
           </ActionButton>
-          <ActionButton title="edit" onClick={(e) => handleEdit(e, todo)}>
-            {todo.status === false ? <FaRegEdit /> : ""}
-          </ActionButton>
+          {todo.status === false && (
+            <ActionButton title="edit" onClick={(e) => handleEdit(e, todo)}>
+              <FaRegEdit />
+            </ActionButton>
+          )}
           <ActionButton onClick={(e) => handleComplete(e, todo)}>
             {todo.status === false ? (
               <IoCheckmarkDoneSharp title="complete" />
